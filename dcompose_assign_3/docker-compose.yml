@@ -1,0 +1,20 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - shared-data:/usr/share/nginx/html:ro
+    networks:
+      - shared-network
+  busybox:
+    image: busybox
+    volumes:
+      - shared-data:/shared
+    networks:
+      - shared-network
+    command: sh -c "while true; do date > /shared/index.html; sleep 5; done"
+volumes:
+  shared-data:
+networks:
+  shared-network:

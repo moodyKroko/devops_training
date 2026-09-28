@@ -1,0 +1,41 @@
+name: visit-tracker
+
+services:
+    db:
+        image: mysql:8.0
+        environment:
+            MYSQL_DATABASE: visitdb
+            MYSQL_USER: leon
+            MYSQL_PASSWORD: leon123456
+            MYSQL_ROOT_PASSWORD: secret-pw
+        volumes:
+            - custom-db:/var/lib/mysql
+        networks:
+            - custom-net
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+            interval: 5s
+            retries: 5
+    app:
+        build: .
+        container_name: app
+        image: visit-tracker:latest
+        ports:
+            - "8080:8080"
+        environment:
+            DB_HOST: db
+            DB_USER: leon
+            DB_PASSWORD: leon123456
+            DB_NAME: visitdb
+        networks:
+            - custom-net
+        depends_on:
+            db:
+                condition: service_healthy
+
+volumes:
+    custom-db:
+        name: custom-db
+networks:
+    custom-net:
+        name: custom-net

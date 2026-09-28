@@ -1,0 +1,16 @@
+services:
+    container1:
+        image: nginx:stable-alpine
+        container_name: container1
+        command: sleep 3600
+        networks:
+            - net_assg5
+    container2:
+        image: busybox
+        container_name: container2
+        command: sleep 3600
+        networks:
+            - net_assg5
+networks:
+    net_assg5:
+        external: true

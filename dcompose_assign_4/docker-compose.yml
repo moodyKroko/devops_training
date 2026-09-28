@@ -1,0 +1,30 @@
+services:
+    app:
+        build: .
+        ports:
+            - "8080:8080"
+        environment:
+            DB_HOST: db
+            DB_USER: user
+            DB_PASSWORD: password
+            DB_NAME: visitdb
+        networks:
+            - shared-network
+        depends_on:
+            - db
+
+    db:
+        image: mysql
+        environment:
+            MYSQL_DATABASE: visitdb
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: rootpassword
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - shared-network
+volumes:
+    db-data:
+networks:
+    shared-network:
