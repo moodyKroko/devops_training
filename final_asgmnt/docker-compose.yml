@@ -18,7 +18,6 @@ services:
             retries: 5
     app:
         build: .
-        container_name: app
         image: visit-tracker:latest
         ports:
             - "8080:8080"
@@ -35,7 +34,7 @@ services:
 
 volumes:
     custom-db:
-        name: custom-db
+        name: visit-tracker-db
 networks:
     custom-net:
-        name: custom-net
+        name: visit-tracker-net
