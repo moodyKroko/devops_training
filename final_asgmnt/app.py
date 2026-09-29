@@ -91,7 +91,10 @@ async def read_root():
 
         return {
             "status": "success",
-            "data": {"total_visits": total_visits, "daily_breakdown": daily_breakdown},
+            "data": {
+                "total_visits": total_visits,
+                "daily_breakdown": daily_breakdown,
+            },
         }
     except OperationalError as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
