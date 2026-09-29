@@ -1,6 +1,10 @@
-import os
 import subprocess
 import sys
+
+
+def test_example_pass():
+    """Simple dummy test to verify test setup works."""
+    assert 1 + 1 == 2
 
 
 def test_default_greeting(monkeypatch):
