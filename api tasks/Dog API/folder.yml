@@ -1,0 +1,14 @@
+info:
+  name: Dog API
+  type: folder
+  seq: 3
+
+request:
+  headers:
+    - name: x-api-key
+      value: live_jY1gS7MFYAnIeVZHNM8twpjvNNkBLlg4L8QTv36NArpvPCtHn0erWwdXSx8dq2KD
+  auth: inherit
+  variables:
+    - name: dog_api
+      value: https://api.thedogapi.com/v1
+      description: dog api

@@ -1,0 +1,19 @@
+info:
+  name: Dog OpenAPI
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{dog_api}}/breeds"
+  headers:
+    - name: x-api-key
+      value: live_jY1gS7MFYAnIeVZHNM8twpjvNNkBLlg4L8QTv36NArpvPCtHn0erWwdXSx8dq2KD
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
